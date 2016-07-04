@@ -26,6 +26,11 @@
 
 #pragma mark - UItableViewController
 
+-(void) viewDidLoad
+{
+    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];//register the delgate to ensure that the payment will be processed
+}
+
 -(void) viewWillAppear:(BOOL)animated
 {
     _productArray = [[NSMutableArray alloc]initWithArray:[Data sharedInstance].productDetailsList];
@@ -46,7 +51,60 @@
 
 #pragma mark - AlertViewController
 
+-(void) downloadAlertbox: (SKPaymentTransaction *)transaction
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:@"Downloading...Please wait\n\n\n"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    //Creating the download spinner
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    spinner.center = CGPointMake(130.5, 65.5);
+    spinner.color = [UIColor blackColor];
+    [spinner startAnimating];
+    [alert.view addSubview:spinner];
+    
+    //Dismiss/ cancel action
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {
+                                                              [self cancelDownload: transaction];
+                                                              
+                                                          }];
+    
+    [alert addAction:defaultAction];
+    
+    [self presentViewController:alert animated:NO completion:nil];
+}
 
+-(void) confirmPayment:(NSIndexPath *)indexPath
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Buy"
+                                                                   message:(@"Pack")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* yesButton = [UIAlertAction
+                                actionWithTitle:@"Yes"
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction * action) {
+                                    //Handle your yes please button action here, Payment!
+                                    SKPayment *payment = [SKPayment paymentWithProduct:[Data sharedInstance].selectedProduct];
+                                    [[SKPaymentQueue defaultQueue] addPayment:payment];
+                                    
+                                }];
+    
+    UIAlertAction* noButton = [UIAlertAction
+                               actionWithTitle:@"No"
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction * action) {
+                                   //Handle no,
+                                   [self dismissViewControllerAnimated:YES completion:nil];
+                               }];
+    
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 #pragma mark - TableViewDataSource
 
@@ -86,9 +144,9 @@
         [Data sharedInstance].selectedProduct = [_productArray objectAtIndex:indexPath.row];
         NSLog(@"%ld: ", (long)indexPath.row);
         NSLog(@"Product: %@ has been SELECTED!", [Data sharedInstance].selectedProduct.localizedTitle);
-        SKPayment *payment = [SKPayment paymentWithProduct:[Data sharedInstance].selectedProduct];
-        [[SKPaymentQueue defaultQueue] addTransactionObserver:self];//register the delgate to ensure that the payment will be processed
-        [[SKPaymentQueue defaultQueue] addPayment:payment];
+        
+        [self confirmPayment:indexPath];
+        
     }
     
 }
@@ -102,11 +160,24 @@
 
 - (IBAction)RestoreButtonPressed:(id)sender {
     NSLog(@"Purchases Restored!");
-    [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+    //[[SKPaymentQueue defaultQueue] addTransactionObserver:self];
     [[SKPaymentQueue defaultQueue] restoreCompletedTransactions];
 }
 
+/*
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue
+{
+    for (SKPaymentTransaction *transaction in queue.transactions)
+    {
+        if ([[Data sharedInstance].selectedProduct.productIdentifier isEqualToString:transaction.payment.productIdentifier])
+        {
+            [Data sharedInstance].selectedProduct.purchased = YES;
+        }
+    }
+}*/
+
 #pragma mark - SKPaymentTransactionObserver
+
 
 - (BOOL)canMakePurchases
 {
@@ -118,6 +189,7 @@
     //NSLog(@"%@", transactions);
     for (SKPaymentTransaction *transaction in transactions)
     {
+        
         switch (transaction.transactionState) {
                 
             case SKPaymentTransactionStatePurchased:
@@ -125,6 +197,8 @@
                 if (transaction.downloads)
                 {
                     [[SKPaymentQueue defaultQueue] startDownloads:transaction.downloads];
+                    [self downloadAlertbox:transaction];
+                    //[[SKPaymentQueue defaultQueue] finishTransaction:transaction];
                     break;
                     //start downloading the medidation pack! if it has one, if not just unlok the feature!
                 }
@@ -136,9 +210,13 @@
                 
             case SKPaymentTransactionStateFailed:
                 // NOT SHOWN: tell the user about the failure (could just be a cancel) (implement this!)
+            {
                 [[SKPaymentQueue defaultQueue] cancelDownloads:transaction.downloads];
                 NSLog(@"Transaction Failed");
+                [[SKPaymentQueue defaultQueue]removeTransactionObserver:self];
+
                 [[SKPaymentQueue defaultQueue] finishTransaction:transaction];
+            }
                 break;
                 
             default:
@@ -147,18 +225,16 @@
     }
 }
 
-
 #pragma mark - DownloadMethods
 - (void)paymentQueue:(SKPaymentQueue *)queue updatedDownloads:(NSArray *)downloads;
 {
     for (SKDownload *download in downloads) {
         
-        
         if (download.downloadState == SKDownloadStateFinished)
         {
             [queue finishTransaction:download.transaction];
+            [self dismissViewControllerAnimated:YES completion:nil];
             [[Data sharedInstance] processDownload:download];
-            
         }
         else if (download.downloadState == SKDownloadStateActive)
         {
@@ -176,10 +252,12 @@
         }
         else if (download.downloadState == SKDownloadStateCancelled)
         {
+            [queue finishTransaction:download.transaction];
             NSLog(@"Download - Cancelled");
         }
         else if (download.downloadState == SKDownloadStateFailed)
         {
+            [queue finishTransaction:download.transaction];
             NSLog(@"Download = Failed");
         }
         else
@@ -188,4 +266,14 @@
         }
     }
 }
+
+
+-(void)cancelDownload: (SKPaymentTransaction *) transaction
+{
+    NSLog(@"Download Cancelled");
+    [[SKPaymentQueue defaultQueue] cancelDownloads:transaction.downloads];
+}
+
+
 @end
+

@@ -94,8 +94,6 @@
     pack.meditiationPackImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[_storeImageData objectAtIndex:0]]];
     pack.meditationItemsArray = _meditationItemArray;
     
-
-    
     //Save Data For persistent use
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     

@@ -78,7 +78,7 @@
     [[Data sharedInstance].meditationPackArray addObject:pack6];
 }
 
-//Methods that obtain the number of items to be created etc, these are storeda level above in contents list
+//Methods that obtain the number of items to be created etc, these are stored a level above in contents list, contents list > "Acutal files"
 -(int)NumberOfPacks: (SKDownload *)download
 {
     NSString *source = [download.contentURL relativePath];

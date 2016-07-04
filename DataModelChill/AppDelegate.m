@@ -19,6 +19,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    /* Download all available network packs - These will be paid for using in app purchases */
     [[Data sharedInstance] loadNetworkPacks];
 
       return YES;

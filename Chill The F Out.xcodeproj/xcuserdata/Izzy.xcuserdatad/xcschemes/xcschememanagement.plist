@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>DataModelChill.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>MeditationPack4.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<true/>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>MeditationPack5.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>4301F4101D18324A00672539</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>430F20E61D1BE73900D16C6F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>43115FBB1D0AAD9B0043C9AB</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>436644581D1959380068ED47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>436644621D19732E0068ED47</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>437BC6F91D25573F007B7339</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

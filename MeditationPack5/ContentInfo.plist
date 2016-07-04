@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ContentVersion</key>
+	<string>1.0</string>
+	<key>IAPProductIdentifier</key>
+	<string>com.reraisedesign.ChillTheFOut.MeditationPack5</string>
+	<key>NumberOfPacks</key>
+	<integer>2</integer>
+	<key>NumberOfFiles</key>
+	<integer>4</integer>
+	<key>MeditationPackTitle</key>
+	<string>Meditation Pack 7</string>
+</dict>
+</plist>

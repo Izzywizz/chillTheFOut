@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Title</key>
+	<string>happy</string>
+	<key>Song</key>
+	<string>happy.mp3</string>
+	<key>Description</key>
+	<string>happyText</string>
+	<key>Congratulations</key>
+	<string>happyCongratulations</string>
+</dict>
+</plist>

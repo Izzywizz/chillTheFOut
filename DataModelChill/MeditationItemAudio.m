@@ -15,11 +15,17 @@
 // pass in the audio file to be played
 // return the audio object then pass it to the actual audio player
 
+/*
+ Audio/ timer methods handles how the audio is returned to user, it gives the user the ability to pause and play, change images based on that selection of pausing etc.
+ The title of meditation item played is shown to the user within the notication bar
+ The seek bar has been disabled and the audio pausing from the notification screen may cause issues within syncing the but this very unlikely to occur, you have to do it like 60 times.
+ */
+
 #import "MeditationItemAudio.h"
 #import "Data.h"
 #import "MeditationItem.h"
 #import "MeditationPack.h"
-#import "AudioCreation.h"
+#import "RRAudioCreation.h"
 #import <MediaPlayer/MediaPlayer.h>
 
 
@@ -31,7 +37,7 @@
 
 @property BOOL isPlaying;
 @property (nonatomic) MeditationItem *item;
-@property (nonatomic) AudioCreation *audio;
+@property (nonatomic) RRAudioCreation *audio;
 @property (nonatomic) AVAudioPlayer *player;
 @property (nonatomic) NSTimer *myTimer;
 
@@ -68,7 +74,7 @@
 -(void) setup
 {
     _item = [Data sharedInstance].selectedMeditationItem;
-    _audio = [[AudioCreation alloc] init];
+    _audio = [[RRAudioCreation alloc] init];
     [self setMeditationItemDescription];
     [self audioSetup];
 }

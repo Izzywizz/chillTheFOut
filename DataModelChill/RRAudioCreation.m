@@ -6,12 +6,17 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
-#import "AudioCreation.h"
+/*
+ Handles audio playback, splits files based on whether the file is stored within the main bundle of the app or downloaded
+ Returns music player object fully ready to be used.
+ */
+
+#import "RRAudioCreation.h"
 #import <AVFoundation/AVFoundation.h>
 #import <AudioToolbox/AudioToolbox.h>
 #import <MediaPlayer/MediaPlayer.h>
 
-@implementation AudioCreation
+@implementation RRAudioCreation
 
 #pragma mark - AVAudioPlayer
 

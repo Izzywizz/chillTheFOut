@@ -6,6 +6,13 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
+/*
+ Handles the Meditation Item views, these are built using the previous reference to the meditation pack, the selectedMeditationPack.
+ So we access the specific object(Meditation Pack) we are looking at and the mediationItem array attached to that specfically selected object.
+ These are then stored within a persistent (within the Data / singleton class) selectedMeditaionItem object meaning that the reference to it can be kept 
+ It all works based on what selection the user makes on the table row and thatthen corresponds to what the Switch case is selected within the Data class
+ */
+
 #import "MeditationItemViewController.h"
 #import "Data.h"
 #import "MeditationItem.h"

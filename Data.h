@@ -16,10 +16,10 @@
 
 @interface Data : NSObject<SKProductsRequestDelegate>
 
-@property NSArray *quoteArray;
-@property NSMutableArray *meditationPackArray;
-@property MeditationPack *selectedMeditationPack;
-@property MeditationItem *selectedMeditationItem;
+@property (nonatomic) NSArray *quoteArray;
+@property (nonatomic) NSMutableArray *meditationPackArray;
+@property (nonatomic) MeditationPack *selectedMeditationPack;
+@property (nonatomic) MeditationItem *selectedMeditationItem;
 
 
 //properties for add new med pack from network

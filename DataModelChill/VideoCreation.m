@@ -5,6 +5,9 @@
 //  Created by Izzy on 14/06/2016.
 //  Copyright © 2016 Izzy. All rights reserved.
 //
+/*
+ Handles the video elements of the app, returns a fully ready to go videoPlayer object that is used within the Help table view.
+ */
 
 #import "VideoCreation.h"
 

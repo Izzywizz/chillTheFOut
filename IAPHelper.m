@@ -5,6 +5,25 @@
 //  Created by Izzy on 29/06/2016.
 //  Copyright © 2016 Izzy. All rights reserved.
 //
+/*
+ 
+ Process the files downloaded from the  Apple server, splitting them based on the path extentions
+ There is a limitation on the file processing in that the files have to be in alphabetic order, for example:
+ Item 1:
+ sad.mp3
+ sad.plist
+ 
+ Item 2:
+ happy.mp3
+ happy.plist
+ 
+ So the happy song/ plist (Item2) would be done first then Item1
+ The title for Pack needs to be set within the ContentsInfo.plist
+ The dictionary key values set within the actual indivudal item plist must be correct or they wont match.
+ 
+ Future update: There is only one image present at the momnent so retina phones wont look great
+ 
+ */
 
 #import "IAPHelper.h"
 
@@ -32,6 +51,8 @@
     
     //int NumberOfPacks = [self NumberOfPacks:download];
     //int numberOfFiles = [self numberOfFiles:download];
+    
+    //Grab the title from contentInfo plist
     NSString *title = [self packTitle:download];
     
     //find all the files in the directory and store it in an array

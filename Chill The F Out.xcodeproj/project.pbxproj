@@ -22,7 +22,7 @@
 		43115FE31D0AAF820043C9AB /* MeditationItemDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 43115FE21D0AAF810043C9AB /* MeditationItemDataSource.m */; };
 		43115FE61D0AB3E10043C9AB /* MeditationPackDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 43115FE51D0AB3E10043C9AB /* MeditationPackDataSource.m */; };
 		43115FFD1D0B04930043C9AB /* MeditationItemAudio.m in Sources */ = {isa = PBXBuildFile; fileRef = 43115FFC1D0B04930043C9AB /* MeditationItemAudio.m */; };
-		431160001D0B0A730043C9AB /* AudioCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43115FFF1D0B0A730043C9AB /* AudioCreation.m */; };
+		431160001D0B0A730043C9AB /* RRAudioCreation.m in Sources */ = {isa = PBXBuildFile; fileRef = 43115FFF1D0B0A730043C9AB /* RRAudioCreation.m */; };
 		431160041D0B0C260043C9AB /* test3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 431160011D0B0C260043C9AB /* test3.mp3 */; };
 		431160051D0B0C260043C9AB /* test2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 431160021D0B0C260043C9AB /* test2.mp3 */; };
 		431160061D0B0C260043C9AB /* test1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 431160031D0B0C260043C9AB /* test1.mp3 */; };
@@ -134,8 +134,8 @@
 		43115FE51D0AB3E10043C9AB /* MeditationPackDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeditationPackDataSource.m; sourceTree = "<group>"; };
 		43115FFB1D0B04930043C9AB /* MeditationItemAudio.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeditationItemAudio.h; sourceTree = "<group>"; };
 		43115FFC1D0B04930043C9AB /* MeditationItemAudio.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeditationItemAudio.m; sourceTree = "<group>"; };
-		43115FFE1D0B0A730043C9AB /* AudioCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioCreation.h; sourceTree = "<group>"; };
-		43115FFF1D0B0A730043C9AB /* AudioCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioCreation.m; sourceTree = "<group>"; };
+		43115FFE1D0B0A730043C9AB /* RRAudioCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRAudioCreation.h; sourceTree = "<group>"; };
+		43115FFF1D0B0A730043C9AB /* RRAudioCreation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRAudioCreation.m; sourceTree = "<group>"; };
 		431160011D0B0C260043C9AB /* test3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test3.mp3; sourceTree = "<group>"; };
 		431160021D0B0C260043C9AB /* test2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test2.mp3; sourceTree = "<group>"; };
 		431160031D0B0C260043C9AB /* test1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = test1.mp3; sourceTree = "<group>"; };
@@ -477,8 +477,8 @@
 		438968621D1016DD004D91A0 /* AudioVideoHandler */ = {
 			isa = PBXGroup;
 			children = (
-				43115FFE1D0B0A730043C9AB /* AudioCreation.h */,
-				43115FFF1D0B0A730043C9AB /* AudioCreation.m */,
+				43115FFE1D0B0A730043C9AB /* RRAudioCreation.h */,
+				43115FFF1D0B0A730043C9AB /* RRAudioCreation.m */,
 				438968591D1010F7004D91A0 /* VideoCreation.h */,
 				4389685A1D1010F7004D91A0 /* VideoCreation.m */,
 			);
@@ -769,7 +769,7 @@
 				43115FC71D0AAD9B0043C9AB /* ViewController.m in Sources */,
 				4389685B1D1010F7004D91A0 /* VideoCreation.m in Sources */,
 				4313145E1D0EBCDE00EC8BC4 /* MeditationItemEndViewController.m in Sources */,
-				431160001D0B0A730043C9AB /* AudioCreation.m in Sources */,
+				431160001D0B0A730043C9AB /* RRAudioCreation.m in Sources */,
 				43115FC41D0AAD9B0043C9AB /* AppDelegate.m in Sources */,
 				43115FC11D0AAD9B0043C9AB /* main.m in Sources */,
 				43115FE31D0AAF820043C9AB /* MeditationItemDataSource.m in Sources */,

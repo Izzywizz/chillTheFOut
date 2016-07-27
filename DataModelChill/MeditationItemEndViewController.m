@@ -6,6 +6,12 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
+/*
+ The congratulatiosn screens only occurs after the audio/ meditation item has finished, as the audio has been registered on the previous (Meditation Audio) is using a delegate
+ Class also contains a social method which allows the posting of messges to FAcebook/ Twitter
+ A custom back button had to be created which only navigates back to the main menu becuase the navigation controller is embedded within a difference screen of so it cant just pop back to main/parent controller
+ */
+
 #import "MeditationItemEndViewController.h"
 #import "ViewController.h"
 #import "MeditationItem.h"

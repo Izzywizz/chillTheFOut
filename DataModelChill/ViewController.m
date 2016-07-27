@@ -6,6 +6,14 @@
 //  Copyright © 2016 Izzy. All rights reserved.
 //
 
+/*
+ This the main screen of the app, it handles the view and selction of the individual Mediation Packs
+ The data is accessed from the singleton data class which allows the creation of views dynamically.
+ So for example, depending on what row the user selects on the indexpath.row this then corresponds to the actual Switch Case within the switch element of the data class, this means that
+ when the user hits for example 0 (which is today medtiaton) then that becomes the selected object to which we build the next view upon, this is stored with SelectedMeditaionPack
+ Singleton allows all of this because there is only one instance within the app thus the data remains consistent.
+ */
+
 #import "ViewController.h"
 #import "Data.h"
 #import "MeditationItemDataSource.h"

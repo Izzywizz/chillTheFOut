@@ -8,7 +8,13 @@
 
 /*
  Singleton Pattern meaning that the data is shared across the App or only one instance is available for it
- This allows the creation of the meditation packs as the data is constant
+ This allows the creation of the meditation packs/ itesms as the data is constantly accessible through the pattern.
+ The class also houses the product catalouge list for unique ID for the in app purchases, it iterates through a list and genrates them.
+ These are then passed on to the process download Class (Network Data) which hanldes the files actualy downloaded
+ 
+ Since the product ID even for the IAP are unqiue when I asked Andy to delete 1-3 on itunes connect it was a mistake, as the they cant be used again, so we must start from 4 (hence the itemCount = 4)
+ Please take into account that a short was used
+ We also need to see the effect of increasing the number of itemCount will do to non existent packs on itunes connect
  */
 
 
@@ -62,7 +68,7 @@
     [NSUserDefaults standardUserDefaults];
     
     //this part is not dynamic, you need to set the number of items/meditation packs available to buy
-    for (short itemCount = 4; itemCount <= 5; itemCount++) {
+    for (short itemCount = 4; itemCount <= 15; itemCount++) {
         [_productIdentifierList addObject:[NSString stringWithFormat:@"com.reraisedesign.ChillTheFOut.MeditationPack%d", itemCount]];
     }
     

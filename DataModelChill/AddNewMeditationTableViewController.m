@@ -7,6 +7,21 @@
 //
 
 /*
+ This class includes the StoreKit (In App Purchase) and a regular TableView that the user interacts with.
+ The product list is generated within the data class and is displayed here.
+ The transaction observer is called first to ensure that the itunes password ready and listening to transctions to record.
+ The user selects the pack and then is asked to buy, the pack is then deliverd via the download method.
+ The restore button downloads previous tranasctions based on the account, there was an issue with previsouly removed transaction being downloaded but this has been solved with a new account
+ Test Accounts
+ 1)
+ testuser1@reraisedesign.com
+ 123TestUser123
+ 2)
+ testuser2@reraisedesign.com
+ 123TestUser123
+ 
+ Problem: restore button may fail sometimes and if you rebuy (its doesnt charge you) the same pack then restore it places the item there twice.
+ 
  */
 
 #import "AddNewMeditationTableViewController.h"
@@ -65,7 +80,7 @@
     [alert.view addSubview:spinner];
     
     //Dismiss/ cancel action
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
+    UIAlertAction *defaultAction = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault
                                                           handler:^(UIAlertAction * action) {
                                                               [self cancelDownload: transaction];
                                                               

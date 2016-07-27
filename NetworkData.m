@@ -5,6 +5,15 @@
 //  Created by Izzy on 23/06/2016.
 //  Copyright © 2016 Izzy. All rights reserved.
 //
+/*
+ * Unpack all the downloaded data from the Apple server/ processing 
+ * store it in the correct locations and build the objects/mediationPack/MeditationItem based on the file path
+ * The most tricky one to look at its the way the items are saved, this has been separated into two types:
+ * Internal, creation of the saved meditationPack so that the saved meditations that have been downloaded previously can be created back again when the app is closed (data persitent)
+ * External, this is used to actually to create the meditationPack when they are downloaded into the app
+
+ 
+ */
 
 #import "NetworkData.h"
 #import <Foundation/Foundation.h>
@@ -64,7 +73,7 @@
     
 }
 
-//Create items array
+//Create items array based on the Medpack data saved
 -(NSMutableArray *) createItems: (NSMutableArray *) mArray;
 {
     NSLog(@"items Array: %@", mArray);
@@ -85,6 +94,9 @@
     return packArray;
 }
 
+#pragma mark - InternalMeditatonPackCreation
+
+//This is the internal creation of the Pack which has been downloaded previsouly
 -(MeditationPack *) createMeditationPack;
 {
     

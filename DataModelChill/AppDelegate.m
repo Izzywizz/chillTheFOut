@@ -10,6 +10,10 @@
 #import <AVFoundation/AVFoundation.h>
 #import "Data.h"
 
+/*
+ * Important to note that the network pack that could be downloaded are intially loaded here, this may be a problem if the app takes a while to load.
+ */
+
 @interface AppDelegate ()
 
 @end
@@ -22,7 +26,6 @@
     
     /* Download all available network packs - These will be paid for using in app purchases */
     [[Data sharedInstance] loadNetworkPacks];
-
       return YES;
 }
 
@@ -34,6 +37,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    //[[SKPaymentQueue defaultQueue]removeTransactionObserver:self];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -47,6 +51,8 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 
+    //should prevent the user from being annoyed by the app asking for the itunes password constantly after the app has  losed.
+    //[[SKPaymentQueue defaultQueue]removeTransactionObserver:self];
 
 }
 

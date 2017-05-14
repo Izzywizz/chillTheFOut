@@ -128,7 +128,7 @@
         case 0:
             return @[@"Congratulations you’re now ready to take on the world! ",
                      @"Test2: Congratulations you’re now ready to take on the world!",
-                     @"Test3: Congratulations you’re now ready to take on the world!"];
+                     @"Congratulations you’re now ready to take on the world!"];
             break;
         case 1:
             return @[@"Test4: Congratulations you’re now ready to take on the world!",
